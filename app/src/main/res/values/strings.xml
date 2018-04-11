@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">MedManager</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="key_dark_theme">dark_theme</string>
+    <string name="title_dark_theme">Dark Theme</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Don\'t have an account? Sign up here</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_error">Please enter a valid email</string>
+    <string name="password_error"> Please enter a valid password</string>
+    <string name="home_nav"> Home </string>
+    <string name="overview_nav"> Overview</string>
+    <string name="search_nav"> Search</string>
+    <string name="profile_nav"> Profile </string>
+    <string name="field_error"> Please fill the fields</string>
+    <string name="medication_added"> New Medication Added</string>
+    <string name="generic_error_message"> Oops! Something went wrong</string>
+    <string name="drug_name">Name of Drug</string>
+    <string name="drug_details">Details (if any)</string>
+    <string name="drug_time">Time to be taken</string>
+    <string name="drug_date">Date to be taken</string>
+    <string name="add_med">Add Medication</string>
+    <string name="no_meds"> You don't have any meds</string>
+</resources>

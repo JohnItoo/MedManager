@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.preference.SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:summary="Toggle Theme"
+        android:key="@string/key_dark_theme"
+        android:title="@string/title_dark_theme" />
+
+</PreferenceScreen>
