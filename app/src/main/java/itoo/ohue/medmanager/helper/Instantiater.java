@@ -27,7 +27,9 @@ public class Instantiater {
     }
 
     public  static void  destroyDbOPs() {
-        dbOps.destroy();
+        if(dbOps!= null) {
+            dbOps.destroy();
+        }
     }
     //endregion
 
