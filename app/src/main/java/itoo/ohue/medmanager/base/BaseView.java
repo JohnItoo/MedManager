@@ -18,4 +18,6 @@ public interface BaseView<T extends BasePresenter> {
 
     void showEditTextError(@StringRes int message);
 
+    void setToolbarTitle(@StringRes int message);
+
 }

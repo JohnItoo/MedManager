@@ -84,11 +84,13 @@ public class OverviewFragment extends BaseFragment<OverviewContract.Presenter> i
     }
 
     public void  initViews() {
-        if(presenter.getAllMeds().getCount() >0){
+        if(presenter.getAllMeds().getCount() >0) {
             emptyLayout.setVisibility(View.GONE);
         }
         else{
             emptyLayout.setVisibility(View.VISIBLE);
         }
+
+        setToolbarTitle(R.string.overview_nav);
     }
 }

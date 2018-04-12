@@ -96,6 +96,7 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     private void initViews() {
         setTimeText(Utils.formatDate(calendar.getTime(), false));
         setDateText(Utils.formatDate(calendar.getTime(), true));
+        setToolbarTitle(R.string.home_nav);
     }
     @Override
     public void medicationAdded( boolean isAdded) {

@@ -64,6 +64,9 @@ public class SignUpActivity extends BaseActivity<SignUpContract.Presenter> imple
     }
 
     @Override
+    public void setToolbarTitle(int message) { }
+
+    @Override
     public void onClick(View view) {
       if(view.getId() == R.id.sign_up_in_btn){
         presenter.proceed( emailEt.getText().toString(), passwordEt.getText().toString());

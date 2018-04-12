@@ -117,6 +117,13 @@ public class BaseDrawerActivity extends BaseActivity<MainContract.Presenter>
 
     }
 
+    @Override
+    public void setToolbarTitle(int message) {
+        if(getSupportActionBar()!= null) {
+            getSupportActionBar().setTitle(message);
+        }
+    }
+
 
     @Override
     public void closeDrawer() {

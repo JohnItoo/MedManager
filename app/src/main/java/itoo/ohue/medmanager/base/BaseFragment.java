@@ -34,4 +34,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends android.supp
     public void showEditTextError(int message) {
         ((BaseActivity)getActivity()).makeToast(message);
     }
+
+    @Override
+    public void setToolbarTitle( int message) {
+        ((BaseActivity) getActivity()).setToolbarTitle(message);
+    }
+
+
 }
