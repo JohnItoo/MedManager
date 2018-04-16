@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="itoo.ohue.medmanager.SettingsActivity"
+    tools:context="itoo.ohue.medmanager.com.ohue.medmanager.SettingsActivity"
    >
 
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:name="itoo.ohue.medmanager.SettingsFragment"
+        android:name="com.ohue.medmanager.SettingsFragment"
         android:id="@+id/fragment_settings"/>
 
     <android.support.design.widget.AppBarLayout

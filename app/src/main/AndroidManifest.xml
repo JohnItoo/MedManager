@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/lightTheme">
-        <activity android:name=".EntryActivity">
+        <activity android:name="com.ohue.medmanager.EntryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,19 +20,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".base.BaseDrawerActivity"
+            android:name="com.ohue.medmanager.base.BaseDrawerActivity"
             android:label="@string/title_activity_base"
             android:launchMode="singleTop"/>
-        <activity android:name=".SettingsActivity"
-            android:parentActivityName=".base.BaseDrawerActivity">
+        <activity android:name="com.ohue.medmanager.SettingsActivity"
+            android:parentActivityName="com.ohue.medmanager.base.BaseDrawerActivity">
         <meta-data
               android:name="android.support.PARENT_ACTIVITY"
-            android:value=".base.BaseDrawerActivity"/>
+            android:value="com.ohue.medmanager.base.BaseDrawerActivity"/>
         </activity>
 
-        <activity android:name=".signup.SignUpActivity"/>
+        <activity android:name="com.ohue.medmanager.signup.SignUpActivity"/>
 
-        <receiver android:name=".miscellanous.AlarmReceiver">
+        <receiver android:name="com.ohue.medmanager.miscellanous.AlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
