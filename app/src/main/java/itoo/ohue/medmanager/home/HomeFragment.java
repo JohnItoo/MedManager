@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -17,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import itoo.ohue.medmanager.R;
-import itoo.ohue.medmanager.Utils;
+import itoo.ohue.medmanager.miscellanous.Utils;
 import itoo.ohue.medmanager.base.BaseFragment;
 import itoo.ohue.medmanager.models.Medication;
 
@@ -45,7 +44,6 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
 
         if(homeFragment == null) {
            homeFragment = new HomeFragment();
-           return homeFragment;
         }
         return homeFragment;
     }
@@ -90,9 +88,6 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
         presenter.addMedication(new Medication(name , calendar , dtlIFAny));
     }
 
-
-
-
     private void initViews() {
         setTimeText(Utils.formatDate(calendar.getTime(), false));
         setDateText(Utils.formatDate(calendar.getTime(), true));
@@ -103,8 +98,7 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
         if(isAdded) {
             makeToast(R.string.medication_added);
             resetViews();
-
-        }
+            }
         else{
             makeToast(R.string.generic_error_message);
         }

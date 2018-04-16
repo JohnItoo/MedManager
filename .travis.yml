@@ -1,22 +1,27 @@
 language: android
+   jdk: oraclejdk8
+   android:
+     components:
+       - tools
+       - android-26
+       - build-tools
+       - build-tools-26.0.2
+       - ndk
+       - platform-tools
+       - extra-google-google_play_services
+       - extra-google-m2repository
+       - extra-android-m2repository
+       - addon-google_apis-google-26
+        - sys-img-armeabi-v7a-android-22
+        before_install:
+         - chmod +x gradlew
+         - yes | sdkmanager "platforms;android-27"
+         - chmod +x gradle/wrapper/gradle-wrapper.jar
+        script:
+         - ./gradlew build connectedCheck
+          - ./gradlew build jacocoTestReport assembleAndroidTest
+          - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+          - emulator -avd test -no-skin -no-window &
+        after_success:
+          - bash <(curl -s https://codecov.io/bash)
 
-android:
-  components:
-    # Uncomment the lines below if you want to
-    # use the latest revision of Android SDK Tools
-    # - tools
-    # - platform-tools
-
-    # The BuildTools version used by your project
-    - build-tools-26.0.2
-
-    # The SDK version used to compile your project
-    - android-26
-
-    # Additional components
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
-    - addon-google_apis-google-26
-
- 

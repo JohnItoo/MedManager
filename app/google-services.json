@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "253495533395",
+    "firebase_url": "https://medmanager-1522622007540.firebaseio.com",
+    "project_id": "medmanager-1522622007540",
+    "storage_bucket": "medmanager-1522622007540.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253495533395:android:b212a198d785eaf8",
+        "android_client_info": {
+          "package_name": "itoo.ohue.medmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253495533395-acrptp9u6qq36cfor3cabv9sddfrqrqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "itoo.ohue.medmanager",
+            "certificate_hash": "fd7942529295092f48b67167745c6dfcec7a7562"
+          }
+        },
+        {
+          "client_id": "253495533395-c3odtlfkrfe0aaan8a9hhm73bsipg7pk.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "253495533395-l9k9go2h98fmoios2niviv9ta0c804m9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcvYwhPZFTv-vENmX0mLiCwTj8nMMCZOs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253495533395-c3odtlfkrfe0aaan8a9hhm73bsipg7pk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

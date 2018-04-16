@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import itoo.ohue.medmanager.R;
 import itoo.ohue.medmanager.home.HomeFragment;
 import itoo.ohue.medmanager.overview.OverviewFragment;
+import itoo.ohue.medmanager.search.SearchFragment;
 
 /**
  * Created by OHUE JOHN on 3/31/2018.
@@ -18,27 +19,24 @@ public class MainPresenter implements MainContract.Presenter,NavigationView.OnNa
 
     private MainContract.View view;
 
-    public MainPresenter(MainContract.View view){
+    public MainPresenter(MainContract.View view) {
         this.view = view;
         this.view.setPresenter(this);
         this.view.setNavListener(this);
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_home) {
             view.inflateFragment(HomeFragment.getInstance());
-
-        } else if (id == R.id.nav_overview) {
+            } else if (id == R.id.nav_overview) {
            view.inflateFragment(OverviewFragment.getInstance());
-
-        } else if (id == R.id.nav_search) {
-
-        } else if (id == R.id.nav_profile) {
-
-        }
+           } else if (id == R.id.nav_search) {
+            view.inflateFragment(SearchFragment.getSearchFragmentInstance());
+            } else if (id == R.id.nav_profile) {
+            }
 
       view.closeDrawer();
         return true;

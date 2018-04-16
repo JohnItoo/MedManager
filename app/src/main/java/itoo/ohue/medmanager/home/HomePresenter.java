@@ -7,21 +7,16 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.text.TextUtils;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
 
-import itoo.ohue.medmanager.AlarmReceiver;
+import itoo.ohue.medmanager.miscellanous.AlarmReceiver;
 import itoo.ohue.medmanager.R;
-import itoo.ohue.medmanager.Utils;
-import itoo.ohue.medmanager.base.BasePresenter;
+import itoo.ohue.medmanager.miscellanous.Utils;
 import itoo.ohue.medmanager.helper.Instantiater;
 import itoo.ohue.medmanager.models.Medication;
 
@@ -48,6 +43,10 @@ public class HomePresenter  implements HomeContract.Presenter {
 
             if (TextUtils.isEmpty(medication.getName()) || TextUtils.isEmpty(medication.getTimeToTake())) {
                 view.makeToast(R.string.field_error);
+                return;
+            }
+            else if (Utils.dateToCalendar(medication.getTimeToTake()).compareTo(Calendar.getInstance()) <0 ) {
+                view.makeToast(R.string.time_has_passed);
                 return;
             }
             regMed(medication);

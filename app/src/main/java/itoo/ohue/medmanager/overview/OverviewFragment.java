@@ -23,7 +23,6 @@ public class OverviewFragment extends BaseFragment<OverviewContract.Presenter> i
     LinearLayoutManager linearLayoutManager;
     Parcelable listState;
     public static final String LIST_STATE_KEY = "recycler_list_state";
-
     OverviewAdapter overviewAdapter;
     OverviewPresenter presenter;
     public  static OverviewFragment overviewFragmentInstance = null;

@@ -18,6 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import itoo.ohue.medmanager.SettingsActivity;
 import itoo.ohue.medmanager.helper.Instantiater;
+import itoo.ohue.medmanager.home.HomeFragment;
 import itoo.ohue.medmanager.main.MainContract;
 import itoo.ohue.medmanager.R;
 import itoo.ohue.medmanager.main.MainPresenter;
@@ -44,6 +45,7 @@ public class BaseDrawerActivity extends BaseActivity<MainContract.Presenter>
         setUpUnbinder(ButterKnife.bind(this));
         setSupportActionBar(toolbar);
         new MainPresenter(this);
+        inflateFragment(HomeFragment.getInstance());
 
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override

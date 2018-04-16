@@ -32,5 +32,6 @@
     <string name="drug_date">Date to be taken</string>
     <string name="add_med">Add Medication</string>
     <string name="no_meds"> You don\'t have any meds</string>
-
+    <string name="reset">Reset</string>
+    <string name="time_has_passed">Oops! The time is in the past</string>
 </resources>

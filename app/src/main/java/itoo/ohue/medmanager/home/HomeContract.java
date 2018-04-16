@@ -10,15 +10,11 @@ import itoo.ohue.medmanager.models.Medication;
 public interface HomeContract {
 
     interface View extends BaseView<HomeContract.Presenter> {
-        void medicationAdded( boolean isAdded );
+        void medicationAdded(boolean isAdded);
 
-
-
-        void setTimeText( String time);
+        void setTimeText(String time);
 
         void setDateText(String date);
-
-
     }
 
    interface Presenter extends BasePresenter {

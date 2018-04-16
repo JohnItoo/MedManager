@@ -1,4 +1,4 @@
-package itoo.ohue.medmanager;
+package itoo.ohue.medmanager.miscellanous;
 
 import android.app.Notification;
 import android.content.Context;
@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import itoo.ohue.medmanager.R;
 import itoo.ohue.medmanager.models.Medication;
 
 public class Utils {

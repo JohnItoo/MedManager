@@ -1,4 +1,4 @@
-package itoo.ohue.medmanager;
+package itoo.ohue.medmanager.miscellanous;
 
 import android.app.Notification;
 import android.app.NotificationManager;

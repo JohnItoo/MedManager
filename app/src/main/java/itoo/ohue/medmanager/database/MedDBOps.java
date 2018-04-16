@@ -34,8 +34,7 @@ public class MedDBOps {
         return db.insert(MedDBContract.MedicationColumns.TABLE_NAME , null , cv);
     }
 
-    public  Cursor queryAllReminders(){
-
+    public  Cursor queryAllReminders() {
         return db.query(MedDBContract.MedicationColumns.TABLE_NAME,
                 null,
                 null,
@@ -43,11 +42,18 @@ public class MedDBOps {
                 null,
                 null, MedDBContract.MedicationColumns.COLUMN_MED_DATE+ " ASC"
         );
-
-
     }
 
-
-
+    public Cursor queryName(String nameQuery) {
+        return db.query(MedDBContract.MedicationColumns.TABLE_NAME,
+                new String[] {MedDBContract.MedicationColumns.MED_NAME, MedDBContract.MedicationColumns.COLUMN_MED_DATE,
+                        MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS},
+                MedDBContract.MedicationColumns.MED_NAME + "=?", new String[] { String.valueOf(nameQuery) },
+                null,
+                null,
+                null,
+                null
+                );
+    }
 
 }

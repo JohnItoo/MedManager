@@ -22,17 +22,14 @@ public class SettingsActivity extends MyThemeActivity {
 
         setSupportActionBar(settingsToolbar);
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar!=null){
+        if (actionBar!=null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-
-
     }
 
     @Override
     protected void onDestroy() {
-        if(unbinder!= null){
+        if(unbinder!= null) {
             unbinder.unbind();
         }
         super.onDestroy();
@@ -41,7 +38,7 @@ public class SettingsActivity extends MyThemeActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int  id = item.getItemId();
-        if(id == R.id.home){
+        if(id == R.id.home) {
             NavUtils.navigateUpFromSameTask(this);
         }
         return super.onOptionsItemSelected(item);
