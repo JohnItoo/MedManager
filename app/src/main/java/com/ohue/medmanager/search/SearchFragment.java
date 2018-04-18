@@ -64,6 +64,7 @@ public class SearchFragment extends BaseFragment<SearchContract.Presenter> imple
         searchRecyclerView.setLayoutManager(linearLayoutManager);
         searchRecyclerView.setHasFixedSize(true);
         searchRecyclerView.setAdapter(searchAdapter);
+        setToolbarTitle(R.string.search_nav);
         return view;
     }
 

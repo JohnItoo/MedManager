@@ -74,6 +74,7 @@ public class CategoryFragment extends BaseFragment<CategoryContract.Presenter>
        expListView= (ExpandableListView) view.findViewById(R.id.category_expand_list);
         listAdapter = new CategoryExpandableAdapter(getActivity(), listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
+        setToolbarTitle(R.string.category_nav);
         return view;
     }
 

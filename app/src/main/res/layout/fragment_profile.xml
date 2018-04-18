@@ -39,6 +39,7 @@
         android:background="@color/colorPrimary"
         android:text="Sign out Google"
         android:textColor="@android:color/white"
-        android:id="@+id/sign_out_google"/>
+        android:id="@+id/sign_out_google"
+        android:layout_marginTop="6dp"/>
 
 </LinearLayout>

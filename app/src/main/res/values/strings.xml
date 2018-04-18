@@ -35,6 +35,7 @@
     <string name="reset">Reset</string>
     <string name="time_has_passed">Oops! The time is in the past</string>
     <string name="title_activity_demo">DemoActivity</string>
+    <string name="category_nav">Category</string>
 
     <string-array name="month_array">
         <item>January</item>
