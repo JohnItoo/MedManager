@@ -20,12 +20,7 @@ public class Medication {
         this.name = name;
         this.timeToTake = timeToTake;
         this.endDate = endDate;
-        if(TextUtils.isEmpty(details)){
-            this.details = "No Additional Details";
-        }
-        else{
-            this.details = details;
-        }
+
 
     }
 
@@ -50,7 +45,13 @@ public class Medication {
     }
 
     public String getDetails() {
-        return details;
+        if(TextUtils.isEmpty(this.details)){
+           return  "No Additional Details";
+        }
+        else{
+            return details;
+        }
+
     }
 
     public String getName() {

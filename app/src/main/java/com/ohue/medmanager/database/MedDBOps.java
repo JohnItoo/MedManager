@@ -29,7 +29,8 @@ public class MedDBOps {
         cv.put(MedDBContract.MedicationColumns.MED_NAME, medication.getName());
         cv.put(MedDBContract.MedicationColumns.COLUMN_MED_DATE , medication.getTimeToTake());
         cv.put(MedDBContract.MedicationColumns.COLUMN_MED_SPECIFIC_ID, medication.getUniqueKey());
-        cv.put(MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS, "Nothing yet");
+        cv.put(MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS, medication.getDetails());
+        cv.put(MedDBContract.MedicationColumns.COLUMN_MED_END_DATE, medication.getEndDate());
         return db.insert(MedDBContract.MedicationColumns.TABLE_NAME , null , cv);
     }
 
@@ -43,16 +44,13 @@ public class MedDBOps {
         );
     }
 
+    public Cursor queryRemindersInOrder() {
+              String queryString = "SELECT * FROM " + MedDBContract.MedicationColumns.TABLE_NAME + " ORDER BY " + MedDBContract.MedicationColumns.COLUMN_MED_DATE + " DESC ";
+              return db.rawQuery(queryString, null);
+
+    }
+
     public Cursor queryName(String nameQuery) {
-//        return db.query(MedDBContract.MedicationColumns.TABLE_NAME,
-//                new String[] {MedDBContract.MedicationColumns.MED_NAME, MedDBContract.MedicationColumns.COLUMN_MED_DATE,
-//                        MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS},
-//                MedDBContract.MedicationColumns.MED_NAME + "=?", new String[] { String.valueOf(nameQuery) },
-//                null,
-//                null,
-//                null,
-//                null
-//                );
 
               String selectQuery = "SELECT  * FROM " +  MedDBContract.MedicationColumns.TABLE_NAME + " WHERE "
                       + MedDBContract.MedicationColumns.MED_NAME + " = '" + nameQuery +  "'";
@@ -65,7 +63,7 @@ public class MedDBOps {
 //                "'"+monthString+"'";
 
               String selectQuery = "SELECT  * FROM " +  MedDBContract.MedicationColumns.TABLE_NAME + " WHERE "
-                      + " strftime('%m',"+  MedDBContract.MedicationColumns.COLUMN_MED_DATE + " )+  = '" + monthString +  "'";
+                      + " strftime('%m',"+  MedDBContract.MedicationColumns.COLUMN_MED_DATE + " )" +  " = '" + monthString +  "'";
 
               return  db.rawQuery(selectQuery, null);
     }

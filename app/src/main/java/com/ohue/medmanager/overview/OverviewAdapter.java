@@ -42,10 +42,13 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ViewHo
         String title = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.MED_NAME));
         String details = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS));
         String date = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.COLUMN_MED_DATE));
+        String endDate = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.COLUMN_MED_END_DATE));
         holder.medTitle.setText(title);
         holder.medDetails.setText(details);
-       String dateString = Utils.formatDate(Utils.dateToCalendar(date).getTime(), true);
+       String dateString = Utils.databaseDateFormat(Utils.dateToCalendar(date).getTime());
+       String endDateString = Utils.databaseDateFormat(Utils.dateToCalendar(endDate).getTime());
         holder.medTime.setText(dateString);
+        holder.medEndItem.setText(endDateString);
     }
 
     @Override
@@ -74,6 +77,8 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ViewHo
         TextView medDetails;
         @BindView(R.id.med_time_item)
         TextView medTime;
+        @BindView(R.id.med_time_end_item)
+        TextView medEndItem;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

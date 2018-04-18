@@ -20,6 +20,7 @@ public class MedDBContract {
         public static final String COLUMN_MED_SPECIFIC_ID = "medSpecificId";
         public static final String COLUMN_MED_DETAIlS = "medDetails";
         public static final String COLUMN_MED_DATE = "startDate";
+        public static final String COLUMN_MED_END_DATE = "endDate";
 
     }
 

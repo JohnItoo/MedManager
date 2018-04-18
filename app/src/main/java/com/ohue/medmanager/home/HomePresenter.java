@@ -112,10 +112,6 @@ public class HomePresenter  implements HomeContract.Presenter {
                     if(isStartingDialog) {
                         dateCal.set(i, i1, i2);
                         String dateString = Utils.formatDate(dateCal.getTime(), true);
-                        if (dateCalendar.compareTo(dateCal) < 0) {
-                            view.makeToast("Oops You cannot go back to the past");
-                            return;
-                        }
                         calendar.set(i, i1, i2);
                         view.setDateText(dateString);
                     }// block handling EndDate for Medication

@@ -14,6 +14,7 @@ import com.ohue.medmanager.miscellanous.Utils;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,12 +48,11 @@ public class CategoryExpandableAdapter extends BaseExpandableListAdapter{
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-
-        if(!listChildren.get(listOfHeaders.get(groupPosition)).moveToPosition(childPosition)){
-            return null;
+        if(listChildren.get(listOfHeaders.get(groupPosition)).getCount()> 0) {
+            return listChildren.get(listOfHeaders.get(groupPosition));
         }
         else{
-            return listChildren.get(listOfHeaders.get(groupPosition)).moveToPosition(childPosition);
+            return null;
         }
     }
 
@@ -97,18 +97,20 @@ public class CategoryExpandableAdapter extends BaseExpandableListAdapter{
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.item_overview, null);
         }
-        long id = cursor.getLong(cursor.getColumnIndex(MedDBContract.MedicationColumns._ID));
-        String title = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.MED_NAME));
-        String details = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS));
-        String date = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.COLUMN_MED_DATE));
+        if(cursor != null){
+                        long id = cursor.getLong(cursor.getColumnIndex(MedDBContract.MedicationColumns._ID));
+                        String title = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.MED_NAME));
+                        String details = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS));
+                        String date = cursor.getString(cursor.getColumnIndex(MedDBContract.MedicationColumns.COLUMN_MED_DATE));
 
-        TextView medTitle = convertView.findViewById(R.id.med_title_item);
-        TextView medDetails = convertView.findViewById(R.id.med_details_item);
-        TextView medTime = convertView.findViewById(R.id.med_time_item);
-       medTitle.setText(title);
-      medDetails.setText(details);
-        String dateString = Utils.formatDate(Utils.dateToCalendar(date).getTime(), true);
-        medTime.setText(dateString);
+                        TextView medTitle = convertView.findViewById(R.id.med_title_item);
+                        TextView medDetails = convertView.findViewById(R.id.med_details_item);
+                        TextView medTime = convertView.findViewById(R.id.med_time_item);
+                        medTitle.setText(title);
+                        medDetails.setText(details);
+                        String dateString = Utils.formatDate(Utils.dateToCalendar(date).getTime(), true);
+                        medTime.setText(dateString);
+              }
         return convertView;
     }
 

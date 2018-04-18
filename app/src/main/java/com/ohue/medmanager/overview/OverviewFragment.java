@@ -3,6 +3,7 @@ package com.ohue.medmanager.overview;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -47,6 +48,8 @@ public class OverviewFragment extends BaseFragment<OverviewContract.Presenter> i
         linearLayoutManager =  new LinearLayoutManager(getActivity());
       medRecyclerView.setLayoutManager(linearLayoutManager);
       medRecyclerView.setHasFixedSize(true);
+        medRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
+                DividerItemDecoration.VERTICAL));
        medRecyclerView.setAdapter(overviewAdapter);
 
         return view;

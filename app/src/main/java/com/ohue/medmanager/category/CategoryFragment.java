@@ -4,6 +4,7 @@ package com.ohue.medmanager.category;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,9 +62,15 @@ public class CategoryFragment extends BaseFragment<CategoryContract.Presenter>
         presenter= new CategoryPresenter(getActivity());
         listDataHeader = Arrays.asList(getResources().getStringArray(R.array.month_array));
         listDataChild = new HashMap<>();
-        for (int i = 0; i<listDataHeader.size(); i++) {
-            listDataChild.put(listDataHeader.get(i), presenter.getMedsForMonth(i+1));
-        }
+        ArrayList<Cursor> cursorList = new ArrayList<>();
+              for (int i = 0; i<listDataHeader.size(); i++) {
+                       cursorList.add( presenter.getMedsForMonth(i+1));
+              }
+              for (int i = 0; i<listDataHeader.size(); i++) {
+                        listDataChild.put(listDataHeader.get(i), cursorList.get(i));
+                        Log.d("LogSize",  i + "th Cursor" + String.valueOf(cursorList.get(i).getCount()));
+              }
+
        expListView= (ExpandableListView) view.findViewById(R.id.category_expand_list);
         listAdapter = new CategoryExpandableAdapter(getActivity(), listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);

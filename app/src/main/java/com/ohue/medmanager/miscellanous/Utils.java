@@ -28,6 +28,8 @@ public class Utils {
             return displayFormat.format(dateToFormat);
         }
     }
+
+
     public static String databaseDateFormat(Date dateToFormat){
         DateFormat    databaseFormat =  new SimpleDateFormat("E,  MMMM d,  yyyy , HH : mm", Locale.ENGLISH);
         return  databaseFormat.format(dateToFormat);

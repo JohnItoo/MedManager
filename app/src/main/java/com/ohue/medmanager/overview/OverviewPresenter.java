@@ -15,6 +15,7 @@ public class OverviewPresenter implements OverviewContract.Presenter {
 
     @Override
     public Cursor getAllMeds() {
-        return Instantiater.getDBOps(context , Instantiater.getDBInstance(context)).queryAllReminders();
+//        return Instantiater.getDBOps(context , Instantiater.getDBInstance(context)).queryAllReminders();
+        return Instantiater.getDBOps(context , Instantiater.getDBInstance(context)).queryRemindersInOrder();
     }
 }

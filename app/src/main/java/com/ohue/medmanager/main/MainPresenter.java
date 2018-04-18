@@ -42,6 +42,10 @@ public class MainPresenter implements MainContract.Presenter,NavigationView.OnNa
             } else if (id == R.id.nav_profile) {
             view.inflateFragment(ProfileFragment.getInstance());
             }
+            else if (id == R.id.nav_category) {
+                  view.inflateFragment(CategoryFragment.getCategotryFragmentInstance());
+        }
+
 
       view.closeDrawer();
         return true;

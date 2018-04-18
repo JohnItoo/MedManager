@@ -19,6 +19,7 @@ public class MedDBHelper extends SQLiteOpenHelper {
                 MedDBContract.MedicationColumns.MED_NAME + " TEXT NOT NULL, "+
                 MedDBContract.MedicationColumns.COLUMN_MED_SPECIFIC_ID + " TEXT NOT NULL, "+
                 MedDBContract.MedicationColumns.COLUMN_MED_DATE + " TEXT NOT NULL, " +
+                MedDBContract.MedicationColumns.COLUMN_MED_END_DATE +  " TEXT NOT NULL, " +
                 MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS +  " TEXT NOT NULL " +
                 ");";
         db.execSQL(SQL_CREATE_WAITLIST_TABLE);
