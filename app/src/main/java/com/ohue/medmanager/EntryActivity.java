@@ -127,7 +127,12 @@ public class EntryActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private  static void signOut() {
-        mGoogleSignInClient.signOut();
+        mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                  @Override
+                  public void onComplete(@NonNull Task<Void> task) {
+                              System.exit(0);
+                  }
+        });
 
     }
 }

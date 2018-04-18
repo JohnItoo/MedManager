@@ -33,6 +33,11 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     TextView medDateTxt;
     @BindView(R.id.med_time)
     TextView medTimeTxt;
+    @BindView(R.id.med_date_end)
+            TextView medDateEndTxt;
+    @BindView(R.id.med_end_time)
+            TextView medTimeEndTxt;
+
 
 
     HomePresenter presenter;
@@ -73,12 +78,22 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
 
     @OnClick(R.id.med_time)
         public void timeAct() {
-        presenter.createDialog(true);
+        presenter.showDialog(true, true);
     }
 
     @OnClick(R.id.med_date)
     public void dateAct() {
-        presenter.createDialog(false);
+        presenter.showDialog(false, true);
+    }
+
+    @OnClick(R.id.med_date_end)
+    public void endDateAct() {
+        presenter.showDialog(false, false);
+    }
+
+    @OnClick(R.id.med_end_time)
+    public void endTImeAct() {
+        presenter.showDialog(true, false);
     }
 
     @OnClick(R.id.med_add)
@@ -86,12 +101,15 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
         String name = medNameEt.getText().toString();
         String dtlIFAny= medNoteEt.getText().toString();
         String calendar = Utils.databaseDateFormat(presenter.getCalendar().getTime());
-        presenter.addMedication(new Medication(name , calendar , dtlIFAny));
+        String endMedCalendar = Utils.databaseDateFormat(presenter.getMedEndCalendat().getTime());
+        presenter.addMedication(new Medication(name , calendar , dtlIFAny, endMedCalendar));
     }
 
     private void initViews() {
         setTimeText(Utils.formatDate(calendar.getTime(), false));
         setDateText(Utils.formatDate(calendar.getTime(), true));
+        setEndMedDateText(Utils.formatDate(calendar.getTime(), true));
+        setEndMedTimeText(Utils.formatDate(calendar.getTime(), false));
         setToolbarTitle(R.string.home_nav);
     }
     @Override
@@ -113,6 +131,16 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     @Override
     public void setDateText(String date) {
         medDateTxt.setText(date);
+    }
+
+    @Override
+    public void setEndMedTimeText(String endMedTime) {
+        medTimeEndTxt.setText(endMedTime);
+    }
+
+    @Override
+    public void setEndMedDateText(String endMedDate) {
+        medDateEndTxt.setText(endMedDate);
     }
 
     public void resetViews() {

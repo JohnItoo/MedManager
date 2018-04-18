@@ -19,11 +19,16 @@ public class SearchPresenter implements SearchContract.Presenter {
 
     @Override
     public void search(String nameQuery) {
-        if(!TextUtils.isEmpty(nameQuery)) {
+        if(TextUtils.isEmpty(nameQuery)) {
             view.makeToast(R.string.field_error);
         }
         else {
-            searchQuery(nameQuery);
+           if(searchQuery(nameQuery).getCount() >0) {
+               view.showSearchResults(searchQuery(nameQuery));
+           }
+           else {
+               view.makeToast("no search result");
+           }
         }
 
     }
@@ -31,4 +36,5 @@ public class SearchPresenter implements SearchContract.Presenter {
     public Cursor searchQuery(String nameQuery) {
         return Instantiater.getDBOps(context , Instantiater.getDBInstance(context)).queryName(nameQuery);
     }
+
 }

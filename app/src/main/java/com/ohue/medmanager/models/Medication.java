@@ -16,9 +16,10 @@ public class Medication {
 
     private String interval;
 
-    public Medication (String name , String timeToTake , String details){
+    public Medication (String name , String timeToTake , String details, String endDate){
         this.name = name;
         this.timeToTake = timeToTake;
+        this.endDate = endDate;
         if(TextUtils.isEmpty(details)){
             this.details = "No Additional Details";
         }

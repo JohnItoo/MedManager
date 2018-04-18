@@ -7,8 +7,6 @@
     tools:context="itoo.ohue.medmanager.com.ohue.medmanager.EntryActivity"
     android:orientation="vertical">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

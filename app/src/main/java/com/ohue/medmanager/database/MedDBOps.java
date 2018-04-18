@@ -44,15 +44,30 @@ public class MedDBOps {
     }
 
     public Cursor queryName(String nameQuery) {
-        return db.query(MedDBContract.MedicationColumns.TABLE_NAME,
-                new String[] {MedDBContract.MedicationColumns.MED_NAME, MedDBContract.MedicationColumns.COLUMN_MED_DATE,
-                        MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS},
-                MedDBContract.MedicationColumns.MED_NAME + "=?", new String[] { String.valueOf(nameQuery) },
-                null,
-                null,
-                null,
-                null
-                );
+//        return db.query(MedDBContract.MedicationColumns.TABLE_NAME,
+//                new String[] {MedDBContract.MedicationColumns.MED_NAME, MedDBContract.MedicationColumns.COLUMN_MED_DATE,
+//                        MedDBContract.MedicationColumns.COLUMN_MED_DETAIlS},
+//                MedDBContract.MedicationColumns.MED_NAME + "=?", new String[] { String.valueOf(nameQuery) },
+//                null,
+//                null,
+//                null,
+//                null
+//                );
+
+              String selectQuery = "SELECT  * FROM " +  MedDBContract.MedicationColumns.TABLE_NAME + " WHERE "
+                      + MedDBContract.MedicationColumns.MED_NAME + " = '" + nameQuery +  "'";
+              return db.rawQuery(selectQuery, null);
+
+    }
+
+    public Cursor queryforMonth(String monthString) {
+//        String where = "strftime('%m', '"+C+"') = " +
+//                "'"+monthString+"'";
+
+              String selectQuery = "SELECT  * FROM " +  MedDBContract.MedicationColumns.TABLE_NAME + " WHERE "
+                      + " strftime('%m',"+  MedDBContract.MedicationColumns.COLUMN_MED_DATE + " )+  = '" + monthString +  "'";
+
+              return  db.rawQuery(selectQuery, null);
     }
 
 }

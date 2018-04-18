@@ -31,8 +31,6 @@ public class BaseDrawerActivity extends BaseActivity<MainContract.Presenter>
     Toolbar toolbar;
     @BindView (R.id.drawer_layout)
     DrawerLayout drawer;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
     private NavigationView.OnNavigationItemSelectedListener navListener;
@@ -48,14 +46,6 @@ public class BaseDrawerActivity extends BaseActivity<MainContract.Presenter>
         setSupportActionBar(toolbar);
         new MainPresenter(this);
         inflateFragment(HomeFragment.getInstance());
-
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

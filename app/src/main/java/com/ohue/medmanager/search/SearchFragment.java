@@ -32,8 +32,8 @@ public class SearchFragment extends BaseFragment<SearchContract.Presenter> imple
     RecyclerView searchRecyclerView;
     @BindView(R.id.search_layout)
     LinearLayout searchLayout;
-    @BindView(R.id.med_name_edit)
-    EditText medNameQuery;
+    @BindView(R.id.search_name_edit_text)
+    EditText searchNameQuery;
     LinearLayoutManager linearLayoutManager;
     Parcelable listState;
     public static final String LIST_STATE_KEY = "recycler_list_state";
@@ -105,7 +105,7 @@ public class SearchFragment extends BaseFragment<SearchContract.Presenter> imple
 
     @OnClick(R.id.search_button)
     public void searchMedWithName() {
-        presenter.search(medNameQuery.getText().toString());
+        presenter.search(searchNameQuery.getText().toString());
     }
 
     @OnClick(R.id.reset_search)

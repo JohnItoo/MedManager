@@ -24,6 +24,7 @@ public class HomePresenter  implements HomeContract.Presenter {
     private HomeContract.View view;
     private Context context;
     private Calendar calendar;
+    private Calendar endMedCalendar;
 
 
 
@@ -37,6 +38,11 @@ public class HomePresenter  implements HomeContract.Presenter {
         validateStrings(medication );
     }
 
+    @Override
+    public void showDialog(boolean isTime, boolean isStartingDialog) {
+        createDialog(isTime, isStartingDialog);
+    }
+
     // Method to ensure validity of input Strings
 
     private void validateStrings( Medication medication ) {
@@ -46,6 +52,10 @@ public class HomePresenter  implements HomeContract.Presenter {
                 return;
             }
             else if (Utils.dateToCalendar(medication.getTimeToTake()).compareTo(Calendar.getInstance()) <0 ) {
+                view.makeToast(R.string.time_has_passed);
+                return;
+            }
+            else if (Utils.dateToCalendar(medication.getEndDate()).compareTo(Calendar.getInstance()) <0){
                 view.makeToast(R.string.time_has_passed);
                 return;
             }
@@ -67,13 +77,9 @@ public class HomePresenter  implements HomeContract.Presenter {
     }
 
     @Override
-    public void showTimeDialog( boolean isTime) {
-        createDialog(isTime);
-    }
-
-    @Override
     public void provideCalendar(Calendar calendar) {
        this.calendar = (Calendar) calendar.clone();
+       this.endMedCalendar = (Calendar) calendar.clone();
     }
 
     @Override
@@ -81,9 +87,16 @@ public class HomePresenter  implements HomeContract.Presenter {
         return this.calendar;
     }
 
+    @Override
+    public Calendar getMedEndCalendat() {
+        return this.endMedCalendar;
+    }
 
-    public void createDialog (boolean isTime){
+
+    //This method handles crating dialiogs for both the Beginning of medication cycle and the end
+    private void createDialog (boolean isTime, final boolean isStartingDialog){
         final java.util.Calendar dateCal = java.util.Calendar.getInstance();
+        final Calendar secondCalendar = Calendar.getInstance();
         final java.util.Calendar dateCalendar = java.util.Calendar.getInstance();
         int yearPresent = dateCal.get(java.util.Calendar.YEAR);
         int monthPresent = dateCal.get(java.util.Calendar.MONTH);
@@ -95,15 +108,24 @@ public class HomePresenter  implements HomeContract.Presenter {
             DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                    //block handling Starting Date for Medication
+                    if(isStartingDialog) {
+                        dateCal.set(i, i1, i2);
+                        String dateString = Utils.formatDate(dateCal.getTime(), true);
+                        if (dateCalendar.compareTo(dateCal) < 0) {
+                            view.makeToast("Oops You cannot go back to the past");
+                            return;
+                        }
+                        calendar.set(i, i1, i2);
+                        view.setDateText(dateString);
+                    }// block handling EndDate for Medication
+                    else{
+                        secondCalendar.set(i, i1, i2);
+                        String endDateString = Utils.formatDate(secondCalendar.getTime(), true);
+                        endMedCalendar.set(i, i1, i2);
+                        view.setEndMedDateText(endDateString);
 
-                    dateCal.set(i,i1,i2);
-                    String dateString =  Utils.formatDate(dateCal.getTime(),true);
-                    if(dateCalendar.compareTo(dateCal)<0){
-                        view.makeToast("Oops You cannot go back to the past");
-                        return;
                     }
-                    calendar.set(i,i1,i2);
-                   view.setDateText(dateString);
 
                 }
             }, yearPresent,monthPresent,dayPresent);
@@ -114,24 +136,33 @@ public class HomePresenter  implements HomeContract.Presenter {
 
                 @Override
                 public void onTimeSet(TimePicker timePicker, int i, int i1) {
-                    dateCal.set(Calendar.HOUR_OF_DAY,i);
-                    dateCal.set(Calendar.MINUTE,i1);
-                   dateCal.set(Calendar.SECOND,0);
-                    calendar.set(Calendar.HOUR_OF_DAY,i);
-                    calendar.set(Calendar.MINUTE,i1);
-                    calendar.set(Calendar.SECOND,0);
-                    String timeString = Utils.formatDate(calendar.getTime(),false);
-                    view.setTimeText(timeString);
+                    if (isStartingDialog) {
+                        dateCal.set(Calendar.HOUR_OF_DAY, i);
+                        dateCal.set(Calendar.MINUTE, i1);
+                        dateCal.set(Calendar.SECOND, 0);
+                        calendar.set(Calendar.HOUR_OF_DAY, i);
+                        calendar.set(Calendar.MINUTE, i1);
+                        calendar.set(Calendar.SECOND, 0);
+                        String timeString = Utils.formatDate(calendar.getTime(), false);
+                        view.setTimeText(timeString);
+                    } else {
+                        secondCalendar.set(Calendar.HOUR_OF_DAY, i);
+                        secondCalendar.set(Calendar.MINUTE, i1);
+                        secondCalendar.set(Calendar.SECOND, 0);
+                        endMedCalendar.set(Calendar.HOUR_OF_DAY, i);
+                        endMedCalendar.set(Calendar.MINUTE, i1);
+                        endMedCalendar.set(Calendar.SECOND, 0);
+                        String endMedTimeString = Utils.formatDate(endMedCalendar.getTime(), false);
+                        view.setEndMedTimeText(endMedTimeString);
+                        }
                 }
             },hourOfDay,minute,false);
             timePickerDialog.show();
         }
     }
-    private void triggerMedAlarm(Medication medication , Notification notification , int i) {
+    private void triggerMedAlarm(Medication medication, Notification notification, int i) {
         Intent notificationIntent = new Intent(context,  AlarmReceiver.class);
        Calendar medCalendar = Utils.dateToCalendar(medication.getTimeToTake());
-
-
         notificationIntent.putExtra(AlarmReceiver.NOTIFICATION_ID, i);
         notificationIntent.putExtra(AlarmReceiver.NOTIFICATION, notification);
 

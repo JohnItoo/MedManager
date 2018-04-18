@@ -22,21 +22,22 @@
         <activity
             android:name="com.ohue.medmanager.base.BaseDrawerActivity"
             android:label="@string/title_activity_base"
-            android:launchMode="singleTop"/>
-        <activity android:name="com.ohue.medmanager.SettingsActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.ohue.medmanager.SettingsActivity"
             android:parentActivityName="com.ohue.medmanager.base.BaseDrawerActivity">
-        <meta-data
-              android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.ohue.medmanager.base.BaseDrawerActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ohue.medmanager.base.BaseDrawerActivity" />
         </activity>
-
-        <activity android:name="com.ohue.medmanager.signup.SignUpActivity"/>
+        <activity android:name="com.ohue.medmanager.signup.SignUpActivity" />
 
         <receiver android:name="com.ohue.medmanager.miscellanous.AlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

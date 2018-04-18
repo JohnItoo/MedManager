@@ -7,6 +7,10 @@ import android.view.MenuItem;
 
 
 import itoo.ohue.medmanager.R;
+
+import com.ohue.medmanager.ProfileFragment;
+import com.ohue.medmanager.category.CategoryFragment;
+import com.ohue.medmanager.category.CategoryPresenter;
 import com.ohue.medmanager.home.HomeFragment;
 import com.ohue.medmanager.overview.OverviewFragment;
 import com.ohue.medmanager.search.SearchFragment;
@@ -36,6 +40,7 @@ public class MainPresenter implements MainContract.Presenter,NavigationView.OnNa
            } else if (id == R.id.nav_search) {
             view.inflateFragment(SearchFragment.getSearchFragmentInstance());
             } else if (id == R.id.nav_profile) {
+            view.inflateFragment(ProfileFragment.getInstance());
             }
 
       view.closeDrawer();

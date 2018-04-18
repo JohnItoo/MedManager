@@ -15,16 +15,22 @@ public interface HomeContract {
         void setTimeText(String time);
 
         void setDateText(String date);
+
+        void setEndMedTimeText(String endMedTime);
+
+        void setEndMedDateText(String endMedDate);
     }
 
    interface Presenter extends BasePresenter {
        void addMedication(Medication medication);
 
-       void showTimeDialog(boolean isTime);
+       void showDialog(boolean isTime, boolean isStartingDialog);
 
        void provideCalendar (Calendar calendar);
 
        Calendar getCalendar ();
+
+       Calendar getMedEndCalendat();
     }
 }
 

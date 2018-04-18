@@ -7,8 +7,6 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="key_dark_theme">dark_theme</string>
     <string name="title_dark_theme">Dark Theme</string>
@@ -30,8 +28,26 @@
     <string name="drug_details">Details (if any)</string>
     <string name="drug_time">Time to be taken</string>
     <string name="drug_date">Date to be taken</string>
+    <string name="drug_time_end">Time to end</string>
+    <string name="drug_date_end">Date to end</string>
     <string name="add_med">Add Medication</string>
     <string name="no_meds"> You don\'t have any meds</string>
     <string name="reset">Reset</string>
     <string name="time_has_passed">Oops! The time is in the past</string>
+    <string name="title_activity_demo">DemoActivity</string>
+
+    <string-array name="month_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 </resources>
